@@ -39,6 +39,7 @@ contract ThreesigWallet {
     assert(txs[txIdx].founder != msg.sender);
     
     txs[txIdx].destAddr.transfer(balance);
+    balance = 0;
   }
   
   // check if msg.sender is founder
