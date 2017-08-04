@@ -9,11 +9,11 @@ contract preIco {
     uint256 amount;
   }
   
-  Investor[] investors;
+  Investor[] public investors;
 
-  uint8 basicRate;
-  uint8 preIcoBonus;
-  address multisigAddr;
+  uint8 public basicRate;
+  uint8 public preIcoBonus;
+  address public multisigAddr;
   
   // preICO constructor
   function preIco(uint8 br, uint8 pib, address ma) {
