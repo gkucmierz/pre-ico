@@ -1,8 +1,8 @@
-var ConvertLib = artifacts.require("./ConvertLib.sol");
-var MetaCoin = artifacts.require("./MetaCoin.sol");
+
+var ThreesigWallet = artifacts.require("./threesig-wallet.sol");
+var PreIco = artifacts.require("./pre-ico.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(ConvertLib);
-  deployer.link(ConvertLib, MetaCoin);
-  deployer.deploy(MetaCoin);
+  deployer.deploy(ThreesigWallet);
+  deployer.deploy(PreIco);
 };

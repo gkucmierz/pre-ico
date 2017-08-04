@@ -1,8 +1,7 @@
-pragma solidity ^0.4.14;
+pragma solidity ^0.4.4;
 
 contract ThreesigWallet {
 
-  mapping (address => uint) public balances;
   mapping (address => bool) public founders;
 
   struct Tx {
