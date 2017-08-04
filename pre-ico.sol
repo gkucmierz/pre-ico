@@ -1,7 +1,5 @@
 pragma solidity ^0.4.14;
 
-import "threesig-wallet.sol";
-
 contract preIco {
 
   struct Investor {
