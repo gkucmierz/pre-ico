@@ -1,8 +1,7 @@
-pragma solidity ^0.4.14;
+pragma solidity ^0.4.4;
 
 contract ThreesigWallet {
 
-  mapping (address => uint) public balances;
   mapping (address => bool) public founders;
 
   struct Tx {
@@ -12,8 +11,6 @@ contract ThreesigWallet {
   
   Tx[] public txs;
   
-  uint256 balance;
-  
   // constructor made of 3 independent wallets
   function ThreesigWallet(address a, address b, address c) {
     founders[a] = true;
@@ -22,9 +19,7 @@ contract ThreesigWallet {
   }
   
   // preICO contract will send ETHers here
-  function() payable {
-    balance += msg.value;
-  }
+  function() {}
   
   // one of founders can propose destination address for ethers
   function proposeTx(address destAddr) isFounder {
@@ -38,8 +33,7 @@ contract ThreesigWallet {
   function approveTx(uint8 txIdx) isFounder {
     assert(txs[txIdx].founder != msg.sender);
     
-    txs[txIdx].destAddr.transfer(balance);
-    balance = 0;
+    txs[txIdx].destAddr.transfer(this.balance);
   }
   
   // check if msg.sender is founder
