@@ -1,6 +1,6 @@
 pragma solidity ^0.4.4;
 
-contract preIcoExperty {
+contract preTgeExperty {
 
   struct Contributor {
     address addr;
@@ -14,7 +14,7 @@ contract preIcoExperty {
   address public multisigAddr;
   
   // preICO constructor
-  function preIcoExperty(uint8 br, uint8 pib, address ma) {
+  function preTgeExperty(uint8 br, uint8 pib, address ma) {
     basicRate = br;
     preIcoBonus = pib;
     multisigAddr = ma;
@@ -27,7 +27,7 @@ contract preIcoExperty {
     uint256 tokens = ethers * basicRate;
     uint256 bonus = ethers * preIcoBonus;
 
-    // save investor for further use
+    // save contributor for further use
     contributors.push(Contributor({
       addr: msg.sender,
       amount: tokens + bonus
