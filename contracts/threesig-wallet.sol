@@ -7,6 +7,7 @@ contract ThreesigWallet {
   struct Tx {
     address founder;
     address destAddr;
+    bool active;
   }
   
   Tx[] public txs;
@@ -25,14 +26,17 @@ contract ThreesigWallet {
   function proposeTx(address destAddr) isFounder {
     txs.push(Tx({
       founder: msg.sender,
-      destAddr: destAddr
+      destAddr: destAddr,
+      active: true
     }));
   }
   
   // another founder can approve specified tx and send it to destAddr
   function approveTx(uint8 txIdx) isFounder {
     assert(txs[txIdx].founder != msg.sender);
+    assert(txs[txIdx].active);
     
+    txs[txIdx].active = false;
     txs[txIdx].destAddr.transfer(this.balance);
   }
   
